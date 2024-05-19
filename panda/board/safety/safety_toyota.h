@@ -144,6 +144,12 @@ static void toyota_rx_hook(const CANPacket_t *to_push) {
       }
     }
 
+    // PFEIFER - AOL {{
+    if (addr == 0x1D3) {
+      acc_main_on = GET_BIT(to_push, 15U);
+    }
+    // }} PFEIFER - AOL
+
     // enter controls on rising edge of ACC, exit controls on ACC off
     // exit controls on rising edge of gas press
     if (addr == 0x1D2) {
